@@ -1,10 +1,6 @@
 stages:
   prep:
-    foreach:
-      - uk
-      - us
-      - es
-      - fr
+    foreach: ${countries}
     do:
       cmd: python prep.py ${item}
       params:
@@ -16,11 +12,7 @@ stages:
         - train/${item}
         - test/${item}
   train:
-    foreach:
-      - uk
-      - us
-      - es
-      - fr
+    foreach: ${countries}
     do:
       cmd: python train.py ${item}
       params:
@@ -31,11 +23,7 @@ stages:
       outs:
         - models/${item}
   eval:
-    foreach:
-      - uk
-      - us
-      - es
-      - fr
+    foreach: ${countries}
     do:
       cmd: python eval.py ${item}
       params:
