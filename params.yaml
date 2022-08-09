@@ -1,0 +1,6 @@
+split: 0.8
+model_params:
+  batch_size: 64
+  epochs: 1
+  latent_dim: 256
+  num_samples: 10000

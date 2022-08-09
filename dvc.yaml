@@ -1,0 +1,49 @@
+stages:
+  prep:
+    foreach:
+      - uk
+      - us
+      - es
+      - fr
+    do:
+      cmd: python prep.py ${item}
+      params:
+        - split
+      deps:
+        - prep.py
+        - raw/${item}
+      outs:
+        - train/${item}
+        - test/${item}
+  train:
+    foreach:
+      - uk
+      - us
+      - es
+      - fr
+    do:
+      cmd: python train.py ${item}
+      params:
+        - model_params
+      deps:
+        - train.py
+        - train/${item}
+      outs:
+        - models/${item}
+  eval:
+    foreach:
+      - uk
+      - us
+      - es
+      - fr
+    do:
+      cmd: python eval.py ${item}
+      params:
+        - model_params
+      deps:
+        - eval.py
+        - train/${item}
+        - test/${item}
+        - models/${item}
+      metrics:
+        - results/${item}.json

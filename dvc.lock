@@ -1,0 +1,270 @@
+schema: '2.0'
+stages:
+  prep@us:
+    cmd: python prep.py us
+    deps:
+    - path: prep.py
+      md5: 37ed75c2dfcf7dd3f6e9472328a8637a
+      size: 725
+    - path: raw/us
+      md5: a7db8e1289bc07cd6884a8575dfacdb2
+      size: 29347444
+    params:
+      params.yaml:
+        split: 0.8
+    outs:
+    - path: test/us
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/us
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+  prep@es:
+    cmd: python prep.py es
+    deps:
+    - path: prep.py
+      md5: 37ed75c2dfcf7dd3f6e9472328a8637a
+      size: 725
+    - path: raw/es
+      md5: a7db8e1289bc07cd6884a8575dfacdb2
+      size: 29347444
+    params:
+      params.yaml:
+        split: 0.8
+    outs:
+    - path: test/es
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/es
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+  prep@fr:
+    cmd: python prep.py fr
+    deps:
+    - path: prep.py
+      md5: 37ed75c2dfcf7dd3f6e9472328a8637a
+      size: 725
+    - path: raw/fr
+      md5: a7db8e1289bc07cd6884a8575dfacdb2
+      size: 29347444
+    params:
+      params.yaml:
+        split: 0.8
+    outs:
+    - path: test/fr
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/fr
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+  prep@uk:
+    cmd: python prep.py uk
+    deps:
+    - path: prep.py
+      md5: 37ed75c2dfcf7dd3f6e9472328a8637a
+      size: 725
+    - path: raw/uk
+      md5: a7db8e1289bc07cd6884a8575dfacdb2
+      size: 29347444
+    params:
+      params.yaml:
+        split: 0.8
+    outs:
+    - path: test/uk
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/uk
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+  train@es:
+    cmd: python train.py es
+    deps:
+    - path: train.py
+      md5: 262cae092e956311b1e99e032ac68e5d
+      size: 4389
+    - path: train/es
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: models/es
+      md5: 864b1a7394a0b214903c7e0df4304509.dir
+      size: 7229152
+      nfiles: 4
+  train@fr:
+    cmd: python train.py fr
+    deps:
+    - path: train.py
+      md5: 262cae092e956311b1e99e032ac68e5d
+      size: 4389
+    - path: train/fr
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: models/fr
+      md5: a3133a5706bd632a1bbe9cd23a806830.dir
+      size: 7229152
+      nfiles: 4
+  eval@fr:
+    cmd: python eval.py fr
+    deps:
+    - path: eval.py
+      md5: 6f0d78418e293542785be10ecb2bb7d2
+      size: 4807
+    - path: models/fr
+      md5: a3133a5706bd632a1bbe9cd23a806830.dir
+      size: 7229152
+      nfiles: 4
+    - path: test/fr
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/fr
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: results/fr.json
+      md5: 61585a3ce9dd55edf6db4ca76b03241f
+      size: 69
+  train@us:
+    cmd: python train.py us
+    deps:
+    - path: train.py
+      md5: 262cae092e956311b1e99e032ac68e5d
+      size: 4389
+    - path: train/us
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: models/us
+      md5: 9badba9498287beef569777240becd06.dir
+      size: 7229152
+      nfiles: 4
+  eval@us:
+    cmd: python eval.py us
+    deps:
+    - path: eval.py
+      md5: 6f0d78418e293542785be10ecb2bb7d2
+      size: 4807
+    - path: models/us
+      md5: 9badba9498287beef569777240becd06.dir
+      size: 7229152
+      nfiles: 4
+    - path: test/us
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/us
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: results/us.json
+      md5: 14442aacb95714b1383c3cde8e556614
+      size: 70
+  train@uk:
+    cmd: python train.py uk
+    deps:
+    - path: train.py
+      md5: 262cae092e956311b1e99e032ac68e5d
+      size: 4389
+    - path: train/uk
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: models/uk
+      md5: 9e7f6b9c816c38ed1005d8e9be2a7181.dir
+      size: 7229152
+      nfiles: 4
+  eval@uk:
+    cmd: python eval.py uk
+    deps:
+    - path: eval.py
+      md5: 6f0d78418e293542785be10ecb2bb7d2
+      size: 4807
+    - path: models/uk
+      md5: 9e7f6b9c816c38ed1005d8e9be2a7181.dir
+      size: 7229152
+      nfiles: 4
+    - path: test/uk
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/uk
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: results/uk.json
+      md5: 17acb7794c864e6cf5a8aee95f6e0a81
+      size: 70
+  eval@es:
+    cmd: python eval.py es
+    deps:
+    - path: eval.py
+      md5: 6f0d78418e293542785be10ecb2bb7d2
+      size: 4807
+    - path: models/es
+      md5: 864b1a7394a0b214903c7e0df4304509.dir
+      size: 7229152
+      nfiles: 4
+    - path: test/es
+      md5: 943ac3027a1f817e954433582d7840ab
+      size: 7433760
+    - path: train/es
+      md5: 7053e4f74a2c3d689cb708f443fa8b1d
+      size: 21913685
+    params:
+      params.yaml:
+        model_params:
+          batch_size: 64
+          epochs: 1
+          latent_dim: 256
+          num_samples: 10000
+    outs:
+    - path: results/es.json
+      md5: aa174cd9c316fad2dd3ec49d1e4fab94
+      size: 70
