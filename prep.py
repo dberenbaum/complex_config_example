@@ -5,8 +5,8 @@ from dvc.api import params_show
 
 # Split data into train and test
 lang = sys.argv[1]
-params = params_show(stages=f"prep@{lang}")
-raw_path = f"raw/{lang}"
+params = params_show(stages=f"prep@{lang}")["country_models"][lang]
+raw_path = f"raw/{lang.split('_')[0]}"
 with open(raw_path, "r", encoding="utf-8") as f:
     lines = f.read().split("\n")
 

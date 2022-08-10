@@ -1,31 +1,81 @@
-countries:
-  us:
-    model_params:
-      batch_size: 128
-      epochs: 1
-      latent_dim: 512
-      num_samples: 100000
-      max_length: 100
-  uk:
-    model_params:
-      batch_size: 128
-      epochs: 1
-      latent_dim: 512
-      num_samples: 100000
-      max_length: 100
-  fr:
+country_models:
+  us_small:
+    split: 0.9
+    name: United States
+    abbr: us
     model_params:
       batch_size: 32
       epochs: 1
       latent_dim: 128
       num_samples: 1000
       max_length: 100
-  es:
+  uk_small:
+    split: 0.8
+    name: United Kingdom
+    abbr: uk
+    model_params:
+      batch_size: 32
+      epochs: 1
+      latent_dim: 128
+      num_samples: 1000
+      max_length: 100
+  fr_small:
+    split: 0.8
+    name: France
+    abbr: fr
+    model_params:
+      batch_size: 32
+      epochs: 1
+      latent_dim: 128
+      num_samples: 1000
+      max_length: 100
+  es_small:
+    split: 0.8
+    name: Spain
+    abbr: es
     model_params:
       batch_size: 32
       epochs: 1
       latent_dim: 128
       num_samples: 1000
       max_length: 80
-    name: es
-split: 0.8
+  us_large:
+    split: 0.9
+    name: United States
+    abbr: us
+    model_params:
+      batch_size: 128
+      epochs: 1
+      latent_dim: 512
+      num_samples: 100000
+      max_length: 100
+  uk_large:
+    split: 0.8
+    name: United Kingdom
+    abbr: uk
+    model_params:
+      batch_size: 128
+      epochs: 1
+      latent_dim: 512
+      num_samples: 100000
+      max_length: 100
+  fr_large:
+    split: 0.8
+    name: France
+    abbr: fr
+    model_params:
+      batch_size: 128
+      epochs: 1
+      latent_dim: 512
+      num_samples: 100000
+      max_length: 100
+  es_large:
+    split: 0.8
+    name: Spain
+    abbr: es
+    model_params:
+      batch_size: 128
+      epochs: 1
+      latent_dim: 512
+      num_samples: 100000
+      max_length: 100

@@ -8,7 +8,7 @@ from dvclive import Live
 
 # Load model
 lang = sys.argv[1]
-params = params_show(stages=f"eval@{lang}")["countries"][lang]["model_params"]
+params = params_show(stages=f"eval@{lang}")["country_models"][lang]["model_params"]
 model = keras.models.load_model(f"models/{lang}")
 
 # Load train data (needed to recreate same data structure for test)

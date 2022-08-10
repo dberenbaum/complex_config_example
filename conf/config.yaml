@@ -1,11 +1,21 @@
 defaults:
-  - models@countries.us.model_params: large
-  - models@countries.uk.model_params: large
-  - models@countries.fr.model_params: small
-  - models@countries.es.model_params: small
-split: 0.8
-countries:
-  es:
-    name: es
+  - countries@country_models.us_small: us
+  - countries@country_models.uk_small: uk
+  - countries@country_models.fr_small: fr
+  - countries@country_models.es_small: es
+  - countries@country_models.us_large: us
+  - countries@country_models.uk_large: uk
+  - countries@country_models.fr_large: fr
+  - countries@country_models.es_large: es
+  - models@country_models.us_small.model_params: small
+  - models@country_models.uk_small.model_params: small
+  - models@country_models.fr_small.model_params: small
+  - models@country_models.es_small.model_params: small
+  - models@country_models.us_large.model_params: large
+  - models@country_models.uk_large.model_params: large
+  - models@country_models.fr_large.model_params: large
+  - models@country_models.es_large.model_params: large
+country_models:
+  es_small:
     model_params:
       max_length: 80

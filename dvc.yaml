@@ -1,33 +1,33 @@
 stages:
   prep:
-    foreach: ${countries}
+    foreach: ${country_models}
     do:
       cmd: python prep.py ${key}
       params:
-        - split
+        - country_models.${key}.split
       deps:
         - prep.py
-        - raw/${key}
+        - raw/${item.abbr}
       outs:
         - train/${key}
         - test/${key}
   train:
-    foreach: ${countries}
+    foreach: ${country_models}
     do:
       cmd: python train.py ${key}
       params:
-        - countries.${key}.model_params
+        - country_models.${key}.model_params
       deps:
         - train.py
         - train/${key}
       outs:
         - models/${key}
   eval:
-    foreach: ${countries}
+    foreach: ${country_models}
     do:
       cmd: python eval.py ${key}
       params:
-        - countries.${key}.model_params
+        - country_models.${key}.model_params
       deps:
         - eval.py
         - train/${key}
