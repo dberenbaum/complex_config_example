@@ -1,4 +1,8 @@
 [core]
     remote = s3_remote
+[hydra]
+    config_dir = conf
+    config_name = config
+    output_file = params.yaml
 ['remote "s3_remote"']
     url = s3://complex-config-example

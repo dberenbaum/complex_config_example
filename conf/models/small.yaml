@@ -1,0 +1,5 @@
+defaults:
+  - base
+batch_size: 32
+latent_dim: 128
+num_samples: 1000

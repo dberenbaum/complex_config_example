@@ -1,0 +1,5 @@
+countries:
+  us:
+    model_params: /models/large
+  uk:
+    model_params: /models/small

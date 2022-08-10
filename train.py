@@ -8,7 +8,7 @@ from dvc.api import params_show
 
 # Vectorize the data.
 lang = sys.argv[1]
-params = params_show(stages=f"train@{lang}")["model_params"]
+params = params_show(stages=f"train@{lang}")["countries"][lang]["model_params"]
 input_texts = []
 target_texts = []
 input_characters = set()

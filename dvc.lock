@@ -101,22 +101,23 @@ stages:
     cmd: python train.py fr
     deps:
     - path: train.py
-      md5: 262cae092e956311b1e99e032ac68e5d
-      size: 4389
+      md5: 616495104cf773d8f9380e44a3e16188
+      size: 4408
     - path: train/fr
       md5: 7053e4f74a2c3d689cb708f443fa8b1d
       size: 21913685
     params:
       params.yaml:
-        model_params:
-          batch_size: 64
+        countries.fr.model_params:
+          batch_size: 32
           epochs: 1
-          latent_dim: 256
-          num_samples: 10000
+          latent_dim: 128
+          num_samples: 1000
+          max_length: 100
     outs:
     - path: models/fr
-      md5: a3133a5706bd632a1bbe9cd23a806830.dir
-      size: 7229152
+      md5: e86e02f7d1a57e4441e66de9560131e1.dir
+      size: 3152571
       nfiles: 4
   eval@fr:
     cmd: python eval.py fr
