@@ -118,4 +118,4 @@ results = model.evaluate(
 
 live = Live(f"results/{lang}")
 for metric, val in results.items():
-    live.log(metric, val)
+    live.log_metric(metric, val)

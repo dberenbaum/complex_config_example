@@ -92,11 +92,12 @@ stages:
           epochs: 1
           latent_dim: 256
           num_samples: 10000
+          max_length: 100
     outs:
     - path: models/es
-      md5: 864b1a7394a0b214903c7e0df4304509.dir
-      size: 7229152
-      nfiles: 4
+      md5: 1074762d1130f08d3859806d2126c1fd.dir
+      size: 7228206
+      nfiles: 5
   train@fr:
     cmd: python train.py fr
     deps:
@@ -209,11 +210,12 @@ stages:
           epochs: 1
           latent_dim: 256
           num_samples: 10000
+          max_length: 100
     outs:
     - path: models/uk
-      md5: 9e7f6b9c816c38ed1005d8e9be2a7181.dir
-      size: 7229152
-      nfiles: 4
+      md5: 52bf19df6cd267c435e390dca076403f.dir
+      size: 7228207
+      nfiles: 5
   eval@uk:
     cmd: python eval.py uk
     deps:
